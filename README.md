@@ -17,4 +17,4 @@ Font -  Chela One
 Font Color - #F25C54
 Body Background Color - #F7B267
 Nav/Footer Background Color - #F79D65
-Links Color - #
+Links Color - #F27059
