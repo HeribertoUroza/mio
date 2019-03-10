@@ -13,8 +13,14 @@ html, body {
     font-size: 20px;
 }
 
+a:hover {
+    text-decoration: none;
+    color: #f27059
+}
+
 .links {
     text-decoration: none;
+    color: #f25c54;
 }
 
 .motto {
