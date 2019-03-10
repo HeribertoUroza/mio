@@ -1,11 +1,12 @@
 html, body {
-    background-color: #f7b267;
+    /* background-color: #f7b267; */
+    background-color: white;
     font-family: 'Chela One', cursive;
     height: 100%;
 }
-
+/* ffdeb9 */
 .nav {
-    background-color: #f79d65
+    background-color: #ffdeb9
 }
 
 .lcontainer {
@@ -39,7 +40,7 @@ a:hover {
 }
 
 .footer {
-    background-color: #f79d65;
+    background-color: #ffdeb9;
     height: 100px;
     position: relative;
     margin-top: -100px;
