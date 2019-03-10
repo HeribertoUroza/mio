@@ -1,5 +1,5 @@
 <img src='./Pictures/Logo.png'>
-<!-- Motto Needed -->
+What's mine is yours and what's yours is mio
 
 ### `Assignment` ###
 Pursuit(https://github.com/mmosayed/PCNW-Portfolio-Projects)
