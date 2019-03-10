@@ -1,5 +1,5 @@
-# mio
-Full-Stack Social Media Site
+<img src='./Pictures/Logo.png'>
+<!-- Motto Needed -->
 
 ### `Assignment` ###
 Pursuit(https://github.com/mmosayed/PCNW-Portfolio-Projects)
