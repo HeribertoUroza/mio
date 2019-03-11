@@ -15,3 +15,14 @@
     background-color: #f27059;
     color: black;
 }
+
+.form-control:focus {
+    border-color: #f25c54;
+    box-shadow: 0 0 0 0.2rem #f7b267;
+}
+
+.btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active, .show>.btn-secondary.dropdown-toggle {
+    color: black;
+    background-color: #f7b267;
+    border-color: #f25c54;
+}
