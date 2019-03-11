@@ -6,7 +6,8 @@ html, body {
 }
 /* ffdeb9 */
 .nav {
-    background-color: #ffdeb9
+    background-color: white;
+    border-bottom: #f25c54 solid 5px;
 }
 
 .lcontainer {
@@ -40,8 +41,10 @@ a:hover {
 }
 
 .footer {
-    background-color: #ffdeb9;
+    background-color: white;
     height: 100px;
     position: relative;
     margin-top: -100px;
+    border-top: #f25c54 solid 5px;
+    text-align: center;
 }

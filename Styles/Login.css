@@ -1,0 +1,17 @@
+
+.button {
+    text-align: center;
+    
+}
+
+.btn {
+    text-decoration: none;
+    background-color: #f25c54; 
+    border: none;
+    color: black;
+}
+
+.btn-secondary:hover {
+    background-color: #f27059;
+    color: black;
+}
