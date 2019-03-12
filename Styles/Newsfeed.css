@@ -14,4 +14,17 @@
     color: black!important;
 }
 
+a.hover {
+    color: #f7b267
+}
+
+.card-header {
+    color: #f25c54;
+    border-bottom: #f25c54 solid .5px;
+    background-color: white;
+}
+
+.cimg {
+    
+}
 
