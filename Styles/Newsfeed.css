@@ -24,7 +24,19 @@ a.hover {
     background-color: white;
 }
 
-.cimg {
-    
+.form-control:focus {
+    border-color: #f25c54;
+    box-shadow: 0 0 0 0.2rem #f7b267
+
 }
+
+/* attemped image in the input
+
+input[type=text] {
+  background-color: white;
+  background-image: url('../Pictures/MainLogo.png');
+  background-position: 10px 10px; 
+  background-repeat: no-repeat;
+  padding-left: 40px;
+} */
 
