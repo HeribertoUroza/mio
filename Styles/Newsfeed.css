@@ -1,0 +1,17 @@
+
+.card {
+    border-color: #f25c54;
+    margin-top: 2%;
+}
+
+.card-footer {
+    background-color: #F7b267;
+    border-top: #f25c54 solid .5px;
+    font-size: 16px
+}
+
+.text-muted {
+    color: black!important;
+}
+
+
