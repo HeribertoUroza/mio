@@ -1,0 +1,37 @@
+.jumbotron {
+    background-color: transparent
+}
+
+.display-4 {
+    text-align: center
+}
+
+.lead {
+    text-align: center
+}
+
+
+
+.btn {
+    text-decoration: none;
+    background-color: #f25c54; 
+    border: none;
+    color: black;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+.btn-primary:hover {
+    background-color: #f27059;
+    color: black;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+    color: black;
+    background-color: #f7b267;
+    border-color: #f25c54;
+}
+
+.btn-primary.focus, .btn-primary:focus {
+    box-shadow: 0 0 0 0.2rem #f7b267;
+}

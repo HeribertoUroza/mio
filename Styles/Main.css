@@ -3,11 +3,14 @@ html, body {
     background-color: white;
     font-family: 'Lato', sans-serif;
     height: 100%;
+    background-color: #f7e6d2;
+background-image: url("https://www.transparenttextures.com/patterns/fresh-snow.png");
 }
 /* ffdeb9 */
 .nav {
     background-color: white;
     border-bottom: #f25c54 solid 5px;
+    
 }
 
 .lcontainer {

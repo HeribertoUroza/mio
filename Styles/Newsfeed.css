@@ -19,15 +19,36 @@ a.hover {
 }
 
 .card-header {
-    color: #f25c54;
+    color: black;
     border-bottom: #f25c54 solid .5px;
-    background-color: white;
+    background-color: #f7b267;
+background-image: url("https://www.transparenttextures.com/patterns/fresh-snow.png");
 }
 
 .form-control:focus {
     border-color: #f25c54;
     box-shadow: 0 0 0 0.2rem #f7b267
 
+}
+
+.badge-primary {
+    color: black;
+    background-color: #F7b267
+}
+
+.badge-pill {
+    padding-right: 1.5em;
+    padding-left: 1.5em;
+}
+
+.badge {
+    font-size:100%;
+    margin-top: 1%;
+}
+
+a.badge-primary:focus, a.badge-primary:hover {
+    color : #f25c54; 
+    background-color: #f7b267
 }
 
 /* attemped image in the input
