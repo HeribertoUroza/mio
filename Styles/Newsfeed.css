@@ -75,6 +75,7 @@ input[type=text] {
     color: black;
     padding-left: 3%;
     padding-right: 3%;
+    width: 100%;
 }
 
 .btn-primary:hover {
@@ -90,4 +91,8 @@ input[type=text] {
 
 .btn-primary.focus, .btn-primary:focus {
     box-shadow: 0 0 0 0.2rem #f7b267;
+}
+
+.button {
+    width: 100%
 }
