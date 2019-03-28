@@ -1,0 +1,54 @@
+html, body {
+    /* background-color: #f7b267; */
+    background-color: white;
+    font-family: 'Lato', sans-serif;
+    height: 100%;
+    background-color: #f7e6d2;
+background-image: url("https://www.transparenttextures.com/patterns/fresh-snow.png");
+}
+
+.nav {
+    background-color: white;
+    border-bottom: #f25c54 solid 5px;
+    
+}
+
+.lcontainer {
+    padding-right: 3%;
+    font-size: 20px;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #f27059
+}
+
+.links {
+    text-decoration: none;
+    color: #f25c54;
+}
+
+.motto {
+    color: #f25c54;
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Chela One', cursive;
+}
+
+.cContainer {
+    min-height: 80%;
+}
+
+.content {
+    overflow: auto;
+    padding-bottom: 100px;
+}
+
+.footer {
+    background-color: white;
+    height: 100px;
+    position: relative;
+    margin-top: -100px;
+    border-top: #f25c54 solid 5px;
+    text-align: center;
+}
