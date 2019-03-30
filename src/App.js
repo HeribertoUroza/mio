@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { HashRouter, Route, Switch } from 'react-router-dom'
 import Login from './containers/Login'
+import NavBar from './components/NavBar'
 
 
 class App extends Component {
