@@ -10,7 +10,7 @@ class SignUp extends Component {
         super(props);
 
         this.state = {
-            HeadLink: 'Login',
+            HeadLink: 'Sign Up',
             email: '',
             password: '',
             err: ''
@@ -19,19 +19,19 @@ class SignUp extends Component {
 
     handleChange = (e) => {
         this.setState({
-            [e.target.name]: e.target.value
+            [e.target.name] : e.target.value
         })
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
-        const { email, password } = this.state
-        firebase.auth().signInWithEmailAndPassword(email, password)
+        const {email, password} = this.state
+        firebase.auth().createUserAndRetrieveDataWithEmailAndPassword(email,password)
             .then(res => {
                 console.log('res', res)
             })
             .catch(err => {
-                const { message } = err;
+                const {message} = err;
                 this.setState({
                     err: message
                 })
@@ -41,11 +41,11 @@ class SignUp extends Component {
     componentDidMount() {
         this.unsubscribe = firebase.auth().onAuthStateChanged(user => {
             console.log(user)
-            if (user) {
-                this.props.history.push('/') //newsfeed
+            if(user){
+                this.props.history.push('/')
             }
             else {
-
+                
             }
         })
     }
@@ -55,12 +55,11 @@ class SignUp extends Component {
     }
 
     render() {
-        const { HeadLink, email, password, err } = this.state;
-        const displayError = err === '' ? '' : <div className="alert alert-danger" role="alert">{err}</div>
+        const { email, password, err} = this.state;
+        const displayError = err === '' ? '' : <div className="alert alert-danger" role="alert">{ err }</div>
         return (
             <>
-                <NavBar page={HeadLink} />
-
+            
                 <div className='cContainer'>
                     <div className='content'>
                         <div className='container'>
@@ -69,10 +68,10 @@ class SignUp extends Component {
                             <div className='row col-12'>
                                 <div className='col-3'></div>
                                 <form className='col-6'>
-                                    {displayError}
+                                {displayError}
                                     <div className="input-group mb-3">
                                         <input type="text" className="form-control" placeholder="Email" aria-label="Username"
-                                            name='email' value={email} onChange={this.handleChange} />
+                                         name='email' value={email} onChange={this.handleChange}/>
                                     </div>
                                     <div className="input-group mb-3">
                                         <input type="password" className="form-control" placeholder="Password" name='password' value={password} onChange={this.handleChange} />
@@ -88,10 +87,10 @@ class SignUp extends Component {
                     </div>
                 </div>
 
-                {/* <Footer /> */}
+            {/* <Footer /> */}
             </>
 
-        );
+                );
     }
 }
 
