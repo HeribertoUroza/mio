@@ -15,7 +15,7 @@ class Logout extends Component {
         }
     }
 
-    
+
     componentDidMount() {
         firebase.auth().signOut()
     }
@@ -25,24 +25,17 @@ class Logout extends Component {
     }
 
     render() {
-     return (
+        return (
             <>
-        
-
-                <div className='cContainer'>
-                    <div className='content'>
-                        <div className='container'>
-                            <br />
-                            <br />
-                            <h1>Logged Off</h1>
-                        </div>
-                    </div>
+           <div className='container'>
+                    <br />
+                    <br />
+                    <h1>Logged Off</h1>
                 </div>
 
-            {/* <Footer /> */}
             </>
 
-                );
+        );
     }
 }
 

@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import NavBar from '../components/NavBar'
-import Footer from '../components/Footer'
 import firebase from '../firebase'
 import 'bootstrap'
 
@@ -59,10 +57,9 @@ class SignUp extends Component {
         const displayError = err === '' ? '' : <div className="alert alert-danger" role="alert">{err}</div>
         return (
             <>
-                <NavBar page={HeadLink} />
+        
 
-                <div className='cContainer'>
-                    <div className='content'>
+                
                         <div className='container'>
                             <br />
                             <br />
@@ -85,10 +82,9 @@ class SignUp extends Component {
                             </div>
                             <div className='col-3'></div>
                         </div>
-                    </div>
-                </div>
+                    
 
-                {/* <Footer /> */}
+               
             </>
 
         );

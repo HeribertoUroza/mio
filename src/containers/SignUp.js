@@ -60,8 +60,7 @@ class SignUp extends Component {
         return (
             <>
             
-                <div className='cContainer'>
-                    <div className='content'>
+                
                         <div className='container'>
                             <br />
                             <br />
@@ -84,10 +83,6 @@ class SignUp extends Component {
                             </div>
                             <div className='col-3'></div>
                         </div>
-                    </div>
-                </div>
-
-            {/* <Footer /> */}
             </>
 
                 );
