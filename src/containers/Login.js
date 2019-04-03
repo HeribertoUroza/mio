@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import firebase from '../firebase'
-import 'bootstrap'
+
 
 
 class SignUp extends Component {
@@ -53,38 +53,33 @@ class SignUp extends Component {
     }
 
     render() {
-        const { HeadLink, email, password, err } = this.state;
+        const { email, password, err } = this.state;
         const displayError = err === '' ? '' : <div className="alert alert-danger" role="alert">{err}</div>
+
         return (
             <>
-        
-
-                
-                        <div className='container'>
-                            <br />
-                            <br />
-                            <div className='row col-12'>
-                                <div className='col-3'></div>
-                                <form className='col-6'>
-                                    {displayError}
-                                    <div className="input-group mb-3">
-                                        <input type="text" className="form-control" placeholder="Email" aria-label="Username"
-                                            name='email' value={email} onChange={this.handleChange} />
-                                    </div>
-                                    <div className="input-group mb-3">
-                                        <input type="password" className="form-control" placeholder="Password" name='password' value={password} onChange={this.handleChange} />
-                                    </div>
-                                    <div className='button'>
-                                        <button type="submit" className="btn btn-secondary" onClick={this.handleSubmit}>Submit</button>
-                                    </div>
-
-                                </form>
+                <div className='container'>
+                    <br />
+                    <br />
+                    <div className='row col-12'>
+                        <div className='col-3'></div>
+                        <form className='col-6'>
+                            {displayError}
+                            <div className="input-group mb-3">
+                                <input type="text" className="form-control" placeholder="Email" aria-label="Username"
+                                    name='email' value={email} onChange={this.handleChange} />
                             </div>
-                            <div className='col-3'></div>
-                        </div>
-                    
+                            <div className="input-group mb-3">
+                                <input type="password" className="form-control" placeholder="Password" name='password' value={password} onChange={this.handleChange} />
+                            </div>
+                            <div className='button'>
+                                <button type="submit" className="btn btn-secondary" onClick={this.handleSubmit}>Submit</button>
+                            </div>
 
-               
+                        </form>
+                    </div>
+                    <div className='col-3'></div>
+                </div>
             </>
 
         );

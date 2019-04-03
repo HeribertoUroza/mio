@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter, Route } from 'react-router-dom'
+import { HashRouter, Route, Switch } from 'react-router-dom'
 
 import NavBar from './components/NavBar'
 
@@ -18,21 +18,21 @@ class App extends Component {
       <>
         <HashRouter>
           <>
-            <Route path='/' component={ NavBar } />
+            <Route path='/' component={NavBar} />
             <div className='cContainer'>
               <div className='content'>
-                <Route path='/signup' exact component={ SignUp } />
-                <Route path='/login' exact component={ Login } />
-                <Route path='/logout' exact component={ Logout } />
+                <Switch>
+                  <Route path='/signup' exact component={SignUp} />
+                  <Route path='/login' exact component={Login} />
+                  <Route path='/logout' exact component={Logout} />
+                  
+                </Switch>
               </div>
             </div>
             <footer className='footer'>
-              <Route path='/' component={ Footer } />
+              <Route path='/' component={Footer} />
             </footer>
-            
-
           </>
-
         </HashRouter>
       </>
 
