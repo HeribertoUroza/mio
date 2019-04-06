@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import firebase from '../firebase'
 import AuthContext from '../contexts/Auth';
 
 
 
-class SignUp extends Component {
+class Login extends Component {
     constructor(props) {
         super(props);
 
@@ -46,7 +46,13 @@ class SignUp extends Component {
                 <br />
                 <br />
                 <div className='row col-12'>
-                    <div className='col-3'></div>
+                    <div className='col-3 messages'>
+                        <div class=''>Please Login.</div> 
+                        <div> If you do not have an account.</div> 
+                        <div><Link to='/signup'>Click Here to Sign Up</Link></div>
+
+
+                    </div>
                     <form className='col-6'>
                         {displayError}
                         <div className="input-group mb-3">
@@ -57,7 +63,7 @@ class SignUp extends Component {
                             <input type="password" className="form-control" placeholder="Password" name='password' value={password} onChange={this.handleChange} />
                         </div>
                         <div className='button'>
-                            <button type="submit" className="btn btn-secondary" onClick={this.handleSubmit}>Submit</button>
+                            <button type="submit" className="mbtn mbtn-secondary" onClick={this.handleSubmit}>Submit</button>
                         </div>
                     </form>
                 </div>
@@ -81,4 +87,4 @@ class SignUp extends Component {
     }
 }
 
-export default SignUp;
+export default Login;

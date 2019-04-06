@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom'
 import firebase from '../firebase'
 import AuthContext from '../contexts/Auth'
-import 'bootstrap'
 
 
 class SignUp extends Component {

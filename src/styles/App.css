@@ -14,6 +14,8 @@ html, body {
 .lcontainer {
     padding-right: 3%;
     font-size: 20px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 a:hover {
@@ -24,6 +26,7 @@ a:hover {
 .links {
     text-decoration: none;
     color: #f25c54;
+    padding: 20px;
 }
 
 .motto {
@@ -50,4 +53,42 @@ a:hover {
     margin-top: -100px;
     border-top: #f25c54 solid 5px;
     text-align: center;
+}
+
+.messages {
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+}
+
+.mbtn {
+    background-color: #f25c54; 
+}
+
+.button {
+    text-align: center;
+    
+}
+
+.mbtn-secondary {
+    text-decoration: none;
+    background-color: #f25c54; 
+    border: none;
+    color: black;
+    
+}
+
+.mbtn-secondary:hover {
+    background-color: #f27059;
+    color: black;
+}
+
+.mform-control:focus {
+    border-color: #f25c54;
+    box-shadow: 0 0 0 0.2rem #f7b267;
+}
+
+.mbtn-secondary:not(:disabled):not(.disabled).active, .mbtn-secondary:not(:disabled):not(.disabled):active, .show>.mbtn-secondary.dropdown-toggle {
+    color: black;
+    background-color: #f7b267;
+    border-color: #f25c54;
 }
