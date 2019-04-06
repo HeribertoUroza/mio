@@ -18,19 +18,15 @@ class Logout extends Component {
         firebase.auth().signOut()
     }
 
-    componentWillUnmount() {
-        this.unsubscribe()
-    }
-
     render() {
         return (
             <>
-           <div className='container'>
-                    <br />
-                    <br />
-                    <h1>Logged Off</h1>
-                </div>
-
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <div className='motto' style={{ 'font-size': '90px' }}>You Have Logged Out</div>
             </>
 
         );
