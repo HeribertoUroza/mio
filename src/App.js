@@ -7,12 +7,15 @@ import SignUp from './containers/SignUp'
 import Login from './containers/Login'
 import Logout from './containers/Logout'
 import NewsFeed from './containers/NewsFeed'
+import Cart from './containers/Cart'
+import Profile from './containers/Profile'
 import Error404 from './containers/Error404'
 import Footer from './components/Footer'
 
 import AuthContext from './contexts/Auth'
 
 import './styles/App.css'
+
 
 
 class App extends Component {
@@ -55,6 +58,8 @@ class App extends Component {
                     <Route path='/login' exact component={Login} />
                     <Route path='/logout' exact component={Logout} />
                     <Route path='/' exact component={ NewsFeed } />
+                    <Route path='/profile' exact component={ Profile } />
+                    <Route path='/cart' exact component={ Cart } />
                     <Route component={Error404} />
                   </Switch>
                 </div>
