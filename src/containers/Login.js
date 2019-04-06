@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom'
 import firebase from '../firebase'
+import AuthContext from '../contexts/Auth';
 
 
 
@@ -36,51 +38,44 @@ class SignUp extends Component {
             })
     }
 
-    componentDidMount() {
-        this.unsubscribe = firebase.auth().onAuthStateChanged(user => {
-            console.log(user)
-            if (user) {
-                this.props.history.push('/') //newsfeed
-            }
-            else {
-
-            }
-        })
-    }
-
-    componentWillUnmount() {
-        this.unsubscribe()
-    }
-
     render() {
         const { email, password, err } = this.state;
         const displayError = err === '' ? '' : <div className="alert alert-danger" role="alert">{err}</div>
-
-        return (
-            <>
-                <div className='container'>
-                    <br />
-                    <br />
-                    <div className='row col-12'>
-                        <div className='col-3'></div>
-                        <form className='col-6'>
-                            {displayError}
-                            <div className="input-group mb-3">
-                                <input type="text" className="form-control" placeholder="Email" aria-label="Username"
-                                    name='email' value={email} onChange={this.handleChange} />
-                            </div>
-                            <div className="input-group mb-3">
-                                <input type="password" className="form-control" placeholder="Password" name='password' value={password} onChange={this.handleChange} />
-                            </div>
-                            <div className='button'>
-                                <button type="submit" className="btn btn-secondary" onClick={this.handleSubmit}>Submit</button>
-                            </div>
-
-                        </form>
-                    </div>
+        const displayForm = <>
+            <div className='container'>
+                <br />
+                <br />
+                <div className='row col-12'>
                     <div className='col-3'></div>
+                    <form className='col-6'>
+                        {displayError}
+                        <div className="input-group mb-3">
+                            <input type="text" className="form-control" placeholder="Email" aria-label="Username"
+                                name='email' value={email} onChange={this.handleChange} />
+                        </div>
+                        <div className="input-group mb-3">
+                            <input type="password" className="form-control" placeholder="Password" name='password' value={password} onChange={this.handleChange} />
+                        </div>
+                        <div className='button'>
+                            <button type="submit" className="btn btn-secondary" onClick={this.handleSubmit}>Submit</button>
+                        </div>
+                    </form>
                 </div>
-            </>
+                <div className='col-3'></div>
+            </div>
+        </>
+        return (
+            <AuthContext.Consumer>
+                {
+                    (user) => {
+                        if (user) {
+                            return <Redirect to='/' />
+                        } else {
+                            return displayForm
+                        }
+                    } 
+                }
+            </AuthContext.Consumer>
 
         );
     }

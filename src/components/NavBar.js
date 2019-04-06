@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import Logo from '../pictures/Logo.png'
-// import '../styles/App.css'
+
 
 const NavBar = (props) => {
     return (
