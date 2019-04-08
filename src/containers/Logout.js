@@ -26,7 +26,7 @@ class Logout extends Component {
                 <br />
                 <br />
                 <br />
-                <div className='motto' style={{ 'font-size': '90px' }}>You Have Logged Out</div>
+                <div className='motto' style={{ 'fontSize': '90px' }}>You Have Logged Out</div>
             </>
 
         );

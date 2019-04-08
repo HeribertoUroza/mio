@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom'
-import firebase from '../firebase'
-import AuthContext from '../contexts/Auth'
+import { Redirect } from 'react-router-dom';
+import * as firebase from 'firebase';
+//import firebase from '../firebase';
+import AuthContext from '../contexts/Auth';
 
 
 class SignUp extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
+       this.state = {
             HeadLink: 'Sign Up',
             email: '',
             password: '',
-            profile_pic_url: '',
+            profile_obj: null,
+            profile_pic_name: '',
             bio: '',
+            userId: '',
             err: ''
         }
     }
@@ -24,12 +27,47 @@ class SignUp extends Component {
         })
     }
 
+    handleFile = (e) => {
+        const firstFile = e.target.files[0]
+        const fileName = firstFile.name
+        
+        console.log(firstFile.name)
+        this.setState({
+            profile_pic_name: fileName,
+            profile_obj: firstFile
+        }, () =>{
+            console.log(this.state)  
+        })
+
+
+    }
+
     handleSubmit = (e) => {
         e.preventDefault();
         const { email, password } = this.state
         firebase.auth().createUserAndRetrieveDataWithEmailAndPassword(email, password)
             .then(res => {
                 console.log('res', res)
+                this.setState({
+                    userId: res.user.uid
+                })
+                console.log(this.state)
+            })
+            .then( async () => {
+                const root = await firebase.storage().ref();
+                console.log('hehehehe1st', this.state.userId) 
+                const uid = await this.state.userId
+                const fRoute =  await root.child(`/${uid}/Profile_Pic/${this.state.profile_pic_name}`)
+                console.log('hehehehe', this.state.userId) 
+                return fRoute.put(this.state.profile_obj)
+            })
+            .then((snap) => {
+                console.log(snap)
+                return snap.ref.getDownloadURL()
+            })
+            .then((url) => {
+                console.log(url)
+
             })
             .catch(err => {
                 const { message } = err;
@@ -40,7 +78,7 @@ class SignUp extends Component {
     }
 
     render() {
-        const { email, password, profile_pic_url, bio, err } = this.state;
+        const { email, password, bio, err } = this.state;
         const displayError = err === '' ? '' : <div className="alert alert-danger" role="alert">{err}</div>
         const displayForm = <>
             <div className='container'>
@@ -82,19 +120,17 @@ class SignUp extends Component {
                         <div className="input-group mb-3">
                             <input type="password" className="form-control" placeholder="Password" name='password' value={password} onChange={this.handleChange} />
                         </div>
-                        <div class="custom-file">
-                            <input type="file" className="custom-file-input" id="validatedCustomFile" required />
-                                <label className="custom-file-label" for="validatedCustomFile">Choose Profile Picture...</label>
-                                
+                        <div className="custom-file">
+                            <input type="file" className="custom-file-input" id="validatedCustomFile" required name='profile_pic_url' onChange={this.handleFile}/>
+                            <label className="custom-file-label" >{this.state.profile_pic_name}</label>
                             </div>
                         <div className="form-group">
-                            <label for="exampleFormControlTextarea1"></label>
+                            <label ></label>
                             <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" name="bio" value={bio} placeholder="Start Your Bio" onChange={this.handleChange} ></textarea>
                         </div>
                         <div className='button'>
                             <button type="submit" className="btn btn-secondary" onClick={this.handleSubmit}>Submit</button>
                         </div>
-
                     </form>
                 </div>
                 <div className='col-3'></div>
@@ -106,6 +142,7 @@ class SignUp extends Component {
                 {
                     (user) => {
                         if (user) {
+                            console.log(user)
                             return <Redirect to='/' />
                         } else {
                             return displayForm;

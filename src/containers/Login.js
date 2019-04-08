@@ -47,7 +47,7 @@ class Login extends Component {
                 <br />
                 <div className='row col-12'>
                     <div className='col-3 messages'>
-                        <div class=''>Please Login.</div> 
+                        <div className=''>Please Login.</div> 
                         <div> If you do not have an account.</div> 
                         <div><Link to='/signup'>Click Here to Sign Up</Link></div>
 
