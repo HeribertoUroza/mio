@@ -44,7 +44,8 @@ a:hover {
     overflow: auto;
     padding-bottom: 28%;
     display: flex;
-    flex-wrap: wrap
+    flex-wrap: wrap;
+    justify-content: center
 }
 
 .footer {
@@ -70,7 +71,7 @@ a:hover {
     
 }
 
-.mbtn-secondary {
+.btn-secondary {
     text-decoration: none;
     background-color: #f25c54; 
     border: none;
@@ -78,17 +79,17 @@ a:hover {
     
 }
 
-.mbtn-secondary:hover {
+.btn-secondary:hover {
     background-color: #f27059;
     color: black;
 }
 
-.mform-control:focus {
+.form-control:focus {
     border-color: #f25c54;
     box-shadow: 0 0 0 0.2rem #f7b267;
 }
 
-.mbtn-secondary:not(:disabled):not(.disabled).active, .mbtn-secondary:not(:disabled):not(.disabled):active, .show>.mbtn-secondary.dropdown-toggle {
+.btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active, .show>.btn-secondary.dropdown-toggle {
     color: black;
     background-color: #f7b267;
     border-color: #f25c54;

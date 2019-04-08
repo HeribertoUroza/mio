@@ -9,18 +9,39 @@ import '../styles/NewsFeed.css'
 
 class NewsFeed extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            products: [
+                {
+                    username: ''
+                }
+            ]
+        }
+    }
+
     render() {
+        console.log(this.context)
         const displayForm = <>
-            {/* <div className='row col-12'>
-                <div className="card-deck"> */}
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
-                {/* </div>
             
-            </div> */}
+            <div class='row col-10'>
+
+                <input class="form-control mr-lg-2" type="search" placeholder="mio Search" aria-label="Search" />
+
+            </div>
+
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+                
         </>
         return (
 

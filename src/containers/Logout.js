@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import firebase from '../firebase'
 
-
+import '../styles/Logout.css'
 
 class Logout extends Component {
     constructor(props) {
@@ -26,7 +26,10 @@ class Logout extends Component {
                 <br />
                 <br />
                 <br />
-                <div className='motto' style={{ 'fontSize': '90px' }}>You Have Logged Out</div>
+                <div className='mcenter'>
+                    <div className='motto' style={{ 'fontSize': '90px' }}>You Have Logged Out</div>
+
+                </div>
             </>
 
         );
