@@ -4,16 +4,23 @@ import { Redirect } from 'react-router-dom'
 import AuthContext from '../contexts/Auth'
 import Card from '../components/Card'
 
+import '../styles/NewsFeed.css'
 
 
 class NewsFeed extends Component {
 
     render() {
         const displayForm = <>
-            <div class='row col-12'></div>
-                <div class="card-deck">
+            {/* <div className='row col-12'>
+                <div className="card-deck"> */}
                     <Card />
-            </div>
+                    <Card />
+                    <Card />
+                    <Card />
+                    <Card />
+                {/* </div>
+            
+            </div> */}
         </>
         return (
 

@@ -43,7 +43,8 @@ a:hover {
 .content {
     overflow: auto;
     padding-bottom: 28%;
-    
+    display: flex;
+    flex-wrap: wrap
 }
 
 .footer {

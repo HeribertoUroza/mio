@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
+import Logo from '../pictures/Logo.png'
 import { Link } from 'react-router-dom'
 
 const Card = (props) => {
     return (
         <>
            
-
-                <div className="card">
+            
+            {/* <div className="card-deck"> */}
+                <div className="card col-3">
                 <Link className='card-header' to='/profile'>@heriberto</Link>
                 <Link to='/product'>
-                    <img src='https://images.unsplash.com/photo-1499096382193-ebb232527fee?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80'
+                    <img src={Logo}
                         className="card-img-top cimg" alt="..." />
                 </Link>
                     <div className="card-body">
@@ -24,7 +26,7 @@ const Card = (props) => {
                         <small className="text-muted">Last updated 3 mins ago</small>
                     </div>
                         </div>
-            
+            {/* </div> */}
     
         </>
     )
