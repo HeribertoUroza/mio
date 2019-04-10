@@ -7,6 +7,7 @@ import SignUp from './containers/SignUp'
 import Login from './containers/Login'
 import Logout from './containers/Logout'
 import NewsFeed from './containers/NewsFeed'
+import Product from './containers/Product'
 import Cart from './containers/Cart'
 import Profile from './containers/Profile'
 import Error404 from './containers/Error404'
@@ -59,6 +60,7 @@ class App extends Component {
                     <Route path='/logout' exact component={Logout} />
                     <Route path='/' exact component={ NewsFeed } />
                     <Route path='/profile' exact component={ Profile } />
+                    <Route path='/product' exact component={ Product } />
                     <Route path='/cart' exact component={ Cart } />
                     <Route component={Error404} />
                   </Switch>

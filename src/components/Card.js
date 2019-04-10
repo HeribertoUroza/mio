@@ -5,11 +5,8 @@ import { Link } from 'react-router-dom'
 const Card = (props) => {
     return (
         <>
-           
-            
-            {/* <div className="card-deck"> */}
-                <div className="card col-3">
-                <Link className='card-header' to='/profile'>@heriberto</Link>
+                <div className="card col-3" key={props.key}>
+                <Link className='card-header' to='/profile'>{props.username}</Link>
                 <Link to='/product'>
                     <img src={Logo}
                         className="card-img-top cimg" alt="..." />
@@ -26,7 +23,7 @@ const Card = (props) => {
                         <small className="text-muted">Last updated 3 mins ago</small>
                     </div>
                         </div>
-            {/* </div> */}
+           
     
         </>
     )

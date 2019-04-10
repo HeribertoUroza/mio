@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import * as firebase from 'firebase';
 //import firebase from '../firebase';
 import AuthContext from '../contexts/Auth';
+import axios from 'axios'
 
 
 class SignUp extends Component {
@@ -11,6 +12,7 @@ class SignUp extends Component {
 
        this.state = {
             HeadLink: 'Sign Up',
+            displayName: '',
             email: '',
             password: '',
             profile_obj: null,
@@ -67,18 +69,32 @@ class SignUp extends Component {
             })
             .then((url) => {
                 console.log(url)
-
+                //username, email, firebase_uid , bio, profile_pic_url
+                const { displayName, email, userId, bio} = this.state;
+                console.log(this.state)
+                return axios.post('http://localhost:5001/users', {
+                    username: displayName,
+                    email: email,
+                    firebase_uid: userId,
+                    bio: bio,
+                    profile_pic_url: url
+                })
+                
+            })
+            .then((response) => {
+                console.log( 'next res', response);
             })
             .catch(err => {
                 const { message } = err;
                 this.setState({
                     err: message
                 })
+                console.log('yeyeyeyey',this.state)
             })
     }
 
     render() {
-        const { email, password, bio, err } = this.state;
+        const { email, displayName, password, bio, err } = this.state;
         const displayError = err === '' ? '' : <div className="alert alert-danger" role="alert">{err}</div>
         const displayForm = <>
             <div className='container'>
@@ -118,6 +134,10 @@ class SignUp extends Component {
                                 name='email' value={email} onChange={this.handleChange} />
                         </div>
                         <div className="input-group mb-3">
+                            <input type="text" className="form-control" placeholder="Display Name" aria-label="displayName"
+                                name='displayName' value={displayName} onChange={this.handleChange} />
+                        </div>
+                        <div className="input-group mb-3">
                             <input type="password" className="form-control" placeholder="Password" name='password' value={password} onChange={this.handleChange} />
                         </div>
                         <div className="custom-file">
@@ -142,7 +162,8 @@ class SignUp extends Component {
                 {
                     (user) => {
                         if (user) {
-                            console.log(user)
+                            //console.log(user)
+                            console.log(this.state)
                             return <Redirect to='/' />
                         } else {
                             return displayForm;
