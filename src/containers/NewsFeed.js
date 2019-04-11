@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom'
-import axois from 'axios'
+import axios from 'axios'
 
 import AuthContext from '../contexts/Auth'
 import Card from '../components/Card'
@@ -15,36 +15,24 @@ class NewsFeed extends Component {
 
         this.state = {
             userUid: '',
-            products: [
-                {
-                    username: '',
-
-                }
-            ]
+            products: []
         }
     }
     static contextType = AuthContext;
 
-    componentDidMount = async () => {
-   //console.log('eyeyeyeyeyeyeyeyeyeyey', this.context.uid)
-        
+    componentDidMount () {
 
-        // try{
-        //     const currentUser = await this.context.uid
-        //     console.log(currentUser)
-        //     axois.get(`http://localhost:5001/users/${currentUser}`)
-        //         .then((res) => {
-        //             console.log(res)
-        //         })
-        //         .catch((err) => {
-        //             console.log(err)
-        //         })
-        // }
-        // catch(err){ 
-        //     console.log(err)
-        // }
-
-        
+        axios.get(`http://localhost:5001/products/all`)
+            .then(res => {
+                this.setState({ products : res.data.data})
+                console.log(this.state)
+            })
+            .then(() => {
+                console.log('NF context', this.context.uid)
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 
     render() {    
@@ -67,7 +55,7 @@ class NewsFeed extends Component {
                                     {
                                         this.state.products.map((e,i) => {
                                             
-                                            return <Card username={e.username} key={i}/>
+                                            return <Card username={e.username} key={i} title_product={e.title_product} amount={e.amount} product_desc={e.product_desc} updatedat={e.updatedat} img_url={e.img_url}/>
                                         })
                                     }
                                 </>

@@ -8,6 +8,27 @@ import AuthContext from '../contexts/Auth'
 
 class Profile extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            userUid: '',
+            currentUser: null
+        }
+    }
+
+    static contextType = AuthContext;
+
+
+    componentDidMount () {
+        console.log(this.props)
+        // console.log(this.context)
+        // await this.setState({
+        //     currentUser: this.context
+        // })
+        // await console.log(this.state)
+    }
+
     render() {
 
         return (

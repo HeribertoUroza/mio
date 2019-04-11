@@ -79,7 +79,6 @@ class SignUp extends Component {
                     bio: bio,
                     profile_pic_url: url
                 })
-                
             })
             .then((response) => {
                 console.log( 'next res', response);
@@ -164,7 +163,10 @@ class SignUp extends Component {
                         if (user) {
                             //console.log(user)
                             console.log(this.state)
-                            return <Redirect to='/' />
+                            return <Redirect to={{
+                                pathname: '/',
+                                state: { results: 'test'}
+                            }}/>
                         } else {
                             return displayForm;
                         }
