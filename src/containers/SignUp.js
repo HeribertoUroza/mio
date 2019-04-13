@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import * as firebase from 'firebase';
 //import firebase from '../firebase';
 import AuthContext from '../contexts/Auth';
-import CurrentUserContext from '../contexts/CurrentUser';
+
 import axios from 'axios'
 
 
@@ -160,7 +160,7 @@ class SignUp extends Component {
         return (
             
             <AuthContext.Consumer>
-                <CurrentUserContext.Provider value={this.state}>
+                
                 {
                     (user) => {
                         if (user) {
@@ -175,7 +175,7 @@ class SignUp extends Component {
                         }
                     }
                 }
-            </CurrentUserContext.Provider>
+            
             </AuthContext.Consumer>
             
         );

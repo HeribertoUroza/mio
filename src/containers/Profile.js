@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom'
 
 import AuthContext from '../contexts/Auth'
-import CurrentUserContext from '../contexts/CurrentUser'
+
 
 
 
