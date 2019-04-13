@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom'
 
 import AuthContext from '../contexts/Auth'
+import CurrentUserContext from '../contexts/CurrentUser'
 
 
 
@@ -22,17 +23,22 @@ class Profile extends Component {
 
     componentDidMount () {
         console.log(this.props)
-        // console.log(this.context)
-        // await this.setState({
-        //     currentUser: this.context
-        // })
-        // await console.log(this.state)
+        this.setState({
+            currentUser: this.context
+        })
+        console.log(this.state)
+    }
+
+    componentWillUnmount() {
+        
     }
 
     render() {
+        //console.log('Profile HERE')
+        //console.log(this.context.uid)
 
         return (
-
+            
             <AuthContext.Consumer>
                 {
                     (user) => {

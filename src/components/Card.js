@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import Logo from '../pictures/Logo.png'
 import { Link } from 'react-router-dom'
 
 import Moment from 'react-moment';
 
 const Card = (props) => {
     return (
-        <>
-            <div className="card col-3" key={props.key} >
-                <Link className='card-header' to='/profile/'>{props.username}</Link>
+        <>  
+
+            <div className="card col-3" keyID={props.keyID} id={props.key}>
+                <Link className='card-header' to='/profile/' >{props.username}</Link>
                 <Link to='/product'>
                     <img src={props.img_url}
                         className="card-img-top cimg" alt="..." />
@@ -20,7 +20,7 @@ const Card = (props) => {
 
                         <Link to="/product" className="btn btn-primary">BUY</Link>
 
-                    </div>
+                     </div>
                     <div className="card-footer">
                     <small className="text-muted"><Moment fromNow>{props.updatedat}</Moment></small>
                     </div>

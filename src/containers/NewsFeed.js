@@ -17,11 +17,13 @@ class NewsFeed extends Component {
             userUid: '',
             products: []
         }
-    }
+    } 
     static contextType = AuthContext;
+    _isMounted = false
+
 
     componentDidMount () {
-
+        this._isMounted = true
         axios.get(`http://localhost:5001/products/all`)
             .then(res => {
                 this.setState({ products : res.data.data})
@@ -33,6 +35,10 @@ class NewsFeed extends Component {
             .catch(err => {
                 console.log(err)
             })
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false
     }
 
     render() {    
@@ -55,7 +61,7 @@ class NewsFeed extends Component {
                                     {
                                         this.state.products.map((e,i) => {
                                             
-                                            return <Card username={e.username} key={i} title_product={e.title_product} amount={e.amount} product_desc={e.product_desc} updatedat={e.updatedat} img_url={e.img_url}/>
+                                            return <Card username={e.username} keyID={i} id={i} title_product={e.title_product} amount={e.amount} product_desc={e.product_desc} updatedat={e.updatedat} img_url={e.img_url}/>
                                         })
                                     }
                                 </>
