@@ -7,7 +7,7 @@ const Card = (props) => {
     return (
         <>  
 
-            <div className="card col-3" keyID={props.keyID} id={props.key}>
+            <div className="card col-3" keyid={props.keyid} id={props.key}>
                 <Link className='card-header' to='/profile/' >{props.username}</Link>
                 <Link to='/product'>
                     <img src={props.img_url}

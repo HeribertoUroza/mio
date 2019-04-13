@@ -4,7 +4,7 @@ const Footer = (props) => {
     return (
         <>
            
-                Footer stuff here
+                <div className='motto'>mio</div>
             
         </>
     )

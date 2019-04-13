@@ -23,6 +23,8 @@ class NewsFeed extends Component {
 
 
     componentDidMount () {
+        console.log('compdm',this.state)
+        console.log('cdm',this.props)
         this._isMounted = true
         axios.get(`http://localhost:5001/products/all`)
             .then(res => {
@@ -33,7 +35,7 @@ class NewsFeed extends Component {
                 console.log('NF context', this.context.uid)
             })
             .catch(err => {
-                console.log(err)
+                console.log('err',err)
             })
     }
 
@@ -42,7 +44,7 @@ class NewsFeed extends Component {
     }
 
     render() {    
-       
+        console.log(this.props)
         return (
 
             <AuthContext.Consumer>
@@ -55,13 +57,13 @@ class NewsFeed extends Component {
                             return (
 
                                 <>
-                                <div className='row col-10'>
+                                {/* <div className='row col-10'>
                                     <input className="form-control mr-lg-2" type="search" placeholder="mio Search" aria-label="Search" />
-                                </div>
+                                </div> */}
                                     {
                                         this.state.products.map((e,i) => {
                                             
-                                            return <Card username={e.username} keyID={i} id={i} title_product={e.title_product} amount={e.amount} product_desc={e.product_desc} updatedat={e.updatedat} img_url={e.img_url}/>
+                                            return <Card username={e.username} keyid={i} id={i} title_product={e.title_product} amount={e.amount} product_desc={e.product_desc} updatedat={e.updatedat} img_url={e.img_url}/>
                                         })
                                     }
                                 </>

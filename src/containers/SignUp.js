@@ -168,7 +168,7 @@ class SignUp extends Component {
                             console.log(this.state)
                             return <Redirect to={{
                                 pathname: '/',
-                                state: { results: 'test'}
+                                state: { results: this.state.displayName}
                             }}/>
                         } else {
                             return displayForm;
