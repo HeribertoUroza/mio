@@ -14,7 +14,9 @@ class Profile extends Component {
 
         this.state = {
             userUid: '',
-            currentUser: null
+            currentUser: null,
+            product: '',
+            productsArr:[]
         }
     }
 
@@ -33,6 +35,32 @@ class Profile extends Component {
         //console.log('wum',this.context)
     }
 
+    handleFile = (e) => {
+        
+        const firstFile = e.target.files[0]
+        const fileName = firstFile.name
+        
+        console.log(firstFile.name)
+        this.setState({
+            product: fileName,
+            product_obj: firstFile
+        }, () => {
+            console.log(this.state)
+        })
+
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        const { productsArr, product } = this.state
+        productsArr.push(product)
+        
+        console.log(this.state)
+            
+    }
+
+
+
     render() {
         //console.log('Profile HERE')
         //console.log(this.context.uid)
@@ -42,28 +70,12 @@ class Profile extends Component {
             <p className="lead">"I sell tech and stuff"</p>
 
             <div className="card mb-3" style={{"width" : "100%"}}>
-                    <div className="row no-gutters" style={{ "justify-content": "center" }}> 
+                    <div className="row no-gutters" style={{ "justifyContent": "center" }}> 
                     <div className="col-md-4">
                             <img src="https://images.unsplash.com/photo-1469004243181-2a4364487fbf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" className="card-img" alt="..." />
                     </div>
                         
 
-                        {/* <div className="col-md-8">
-                            <div className="card-body">
-                                <div className="card-title">Candy</div>
-                                <div className="card-title">1,000,000</div>
-                                <br />
-                                <br />
-                                <div className="card-title">Description</div>
-                                <p className="card-text">look at the pic for a description brah</p>
-                                <br />
-                                <br />
-                                <br />
-                                <Link to="/product" className="btn btn-primary">BUY</Link>
-                                <br />
-                                <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
-                            </div>
-                        </div> */}
                     </div>
                     
 
