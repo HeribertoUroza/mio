@@ -89,8 +89,7 @@ class NewsFeed extends Component {
                                     <button type='submit'>Submit</button>
                                 </form>
                                     { //isMember ? "$2.00" : "$10.00"
-                                        this.state.searchedProducts === '' ? this.state.products.map((e, i) => {
-
+                                        this.state.searchedProducts.length === 0 ? this.state.products.map((e, i) => {
                                             return <Card username={e.username} key={i} id={i} title_product={e.title_product} amount={e.amount} product_desc={e.product_desc} updatedat={e.updatedat} img_url={e.img_url} productpath={e.firebase_uid} profilepath={e.id} />
                                         }) :
                                         this.state.searchedProducts.map((e,i) => {
