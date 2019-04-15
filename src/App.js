@@ -59,9 +59,9 @@ class App extends Component {
                     <Route path='/login' exact component={Login} />
                     <Route path='/logout' exact component={Logout} />
                     <Route path='/' exact component={ NewsFeed } />
-                    <Route path='/profile' exact component={ Profile } />
-                    <Route path='/product' exact component={ Product } />
-                    <Route path='/cart' exact component={ Cart } />
+                    <Route path='/profile/:firebase_uid' exact component={ Profile } />
+                    <Route path='/product/:id' exact component={ Product } />
+                    <Route path='/cart/:firebase_uid' exact component={ Cart } />
                     <Route component={Error404} />
                   </Switch>
                 </div>

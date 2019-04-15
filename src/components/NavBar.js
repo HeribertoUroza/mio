@@ -5,19 +5,14 @@ import Logo from '../pictures/Logo.png'
 import AuthContext from '../contexts/Auth'
 
 const NavBar = (props) => {
-    const loggedIn = <> 
-        <Link to='/' className='links'>Feed</Link>
-        <Link to='/profile' className='links'>Profile</Link>
-        <Link to='/cart' className='links'>View Cart</Link>
-        <Link to='/logout' className='links'>Logout</Link>
-    </>
 
     const loggedOut = <>
         <Link to='/login' className='links'>Login</Link>
         <Link to='/signup' className='links'>Sign Up</Link>
     </>
-
+    console.log('nav', props)
     return (
+        
         <>
             <nav className="navbar navbar-light nav" >
                 <Link className="navbar-brand" to='/'>
@@ -28,7 +23,13 @@ const NavBar = (props) => {
                         {
                             user => {
                                 if(user){
-                                    return loggedIn
+                                    console.log(user)
+                                    return (<>
+                                        <Link to='/' className='links'>Feed</Link>
+                                        <Link to={`/profile/${user.uid}`} className='links'>Profile</Link>
+                                        <Link to={`/cart/${user.uid}`} className='links'>View Cart</Link>
+                                        <Link to='/logout' className='links'>Logout</Link>
+                                    </>)
                                 } else {
                                     return loggedOut
                                 }

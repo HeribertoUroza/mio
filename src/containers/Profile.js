@@ -52,11 +52,15 @@ class Profile extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        const { productsArr, product } = this.state
-        productsArr.push(product)
+        const { product } = this.state
+        
+        let productsArr = [];
+        
+        
+
         
         console.log(this.state)
-            
+        console.log(productsArr)
     }
 
 
@@ -77,8 +81,6 @@ class Profile extends Component {
                         
 
                     </div>
-                    
-
                 </div>
 
                 <form className=''>

@@ -7,9 +7,9 @@ const Card = (props) => {
     return (
         <>  
 
-            <div className="card col-3" keyid={props.keyid} id={props.key}>
-                <Link className='card-header' to='/profile/' >{props.username}</Link>
-                <Link to='/product'>
+            <div className="card col-3" key={props.key} id={props.key}>
+                <Link className='card-header' to={`/profile/${props.profilepath}`} >{'@'+props.username}</Link>
+                <Link to={`/product/${props.productpath}`}>
                     <img src={props.img_url}
                         className="card-img-top cimg" alt="..." />
                 </Link>
@@ -24,7 +24,7 @@ const Card = (props) => {
                     <div className="card-footer">
                     <small className="text-muted"><Moment fromNow>{props.updatedat}</Moment></small>
                     </div>
-                        </div>
+            </div>
         
     
         </>
