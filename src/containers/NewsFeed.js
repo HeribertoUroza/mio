@@ -85,8 +85,8 @@ class NewsFeed extends Component {
 
                                 <>
                                 <form className='row col-10' onSubmit={this.handleSubmit}>
-                                    <input className="form-control mr-lg-2" type="search" placeholder="mio Search" name='input' aria-label="Search" onChange={this.handleChange}/>
-                                    <button type='submit'>Submit</button>
+                                    <input className="form-control mr-lg-2 col-10" type="search" placeholder="mio Search" name='input' aria-label="Search" onChange={this.handleChange}/>
+                                    <button type='submit' className='col-2'>Submit</button>
                                 </form>
                                     { //isMember ? "$2.00" : "$10.00"
                                         this.state.searchedProducts.length === 0 ? this.state.products.map((e, i) => {

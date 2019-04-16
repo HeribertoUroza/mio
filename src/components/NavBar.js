@@ -23,7 +23,7 @@ const NavBar = (props) => {
                         {
                             user => {
                                 if(user){
-                                    console.log(user)
+                                    console.log('inside nav',user)
                                     return (<>
                                         <Link to='/' className='links'>Feed</Link>
                                         <Link to={`/profile/${user.uid}`} className='links'>Profile</Link>

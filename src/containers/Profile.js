@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect , Link } from 'react-router-dom'
-
+import axios from 'axios'
+import * as firebase from 'firebase';
 import AuthContext from '../contexts/Auth'
 
 
@@ -14,7 +15,7 @@ class Profile extends Component {
 
         this.state = {
             userUid: '',
-            currentUser: null,
+            currentUser: {},
             product: '',
             productsArr:[]
         }
@@ -23,16 +24,32 @@ class Profile extends Component {
     static contextType = AuthContext;
 
 
-    componentDidMount () {
-        console.log(this.props)
-        this.setState({
-            currentUser: this.context
-        })
-        console.log(this.state)
-    }
+    componentDidMount= async () => {
+        console.log('this.props CDM', this.props.match.params.firebase_uid)
+        const fbUser = await this.props.match.params.firebase_uid
 
-    componentWillUnmount() {
-        //console.log('wum',this.context)
+        await axios.get(`http://localhost:5001/users/${fbUser}`)
+        .then(res => {
+            console.log('res in profile',res.data[0])
+            this.setState({
+                currentUser: res.data[0]
+            })
+        })
+        .then(()=> {
+            console.log('after axios', this.state)
+            console.log('herherh',this.state.currentUser.firebase_uid)
+            axios.get(`http://localhost:5001/products/byuser/${this.state.currentUser.firebase_uid}`)
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        })
+        .catch(err => {
+            console.log(err.toString())
+        })
+        
     }
 
     handleFile = (e) => {
@@ -50,17 +67,74 @@ class Profile extends Component {
 
     }
 
-    handleSubmit = (e) => {
+    handleSubmit = async (e) => {
         e.preventDefault();
         const { product } = this.state
         
         let productsArr = [];
         
-        
-
-        
         console.log(this.state)
         console.log(productsArr)
+
+        const root = await firebase.storage().ref();
+        
+        const uid = await this.state.currentUser.firebase_uid
+        const fRoute = await root.child(`/${uid}/Product_Pic/${this.state.product}`)
+        
+        return await fRoute.put(this.state.product_obj)
+            .then(snap => {
+                console.log('this is the snap',snap)
+                return snap.ref.getDownloadURL()
+            })
+            .then(url => {
+                console.log('with URL',this.state)
+                const { id, username, firebase_uid } = this.state.currentUser
+                const {name} = this.state.product_obj
+                axios.post(`http://localhost:5001/products/`, {
+//user_id, username, firebase_uid,title_product, img_url, amount, product_desc
+                user_id: id,
+                username: username,
+                firebase_uid: firebase_uid,
+                title_product: name,
+                img_url: url,
+                amount: Math.floor(Math.random() * 100),
+                product_desc: 'SomeDesc'
+                })
+            })
+            .then(res => {
+                console.log('res after POST', res)
+            })
+            .catch(err => {
+                console.log(err.toString())
+            })
+
+
+        // 
+            // .then(async () => {
+            //     const root = await firebase.storage().ref();
+            //     console.log('hehehehe1st', this.state.userId)
+            //     const uid = await this.state.userId
+            //     const fRoute = await root.child(`/${uid}/Profile_Pic/${this.state.profile_pic_name}`)
+            //     console.log('hehehehe', this.state.userId)
+            //     return fRoute.put(this.state.profile_obj)
+            // })
+            // .then((snap) => {
+            //     console.log(snap)
+            //     return snap.ref.getDownloadURL()
+            // })
+            // .then((url) => {
+            //     console.log(url)
+            //     //username, email, firebase_uid , bio, profile_pic_url
+            //     const { displayName, email, userId, bio } = this.state;
+            //     console.log(this.state)
+            //     return axios.post('http://localhost:5001/users', {
+            //         username: displayName,
+            //         email: email,
+            //         firebase_uid: userId,
+            //         bio: bio,
+            //         profile_pic_url: url
+            //     })
+            // })
     }
 
 
@@ -68,15 +142,18 @@ class Profile extends Component {
     render() {
         //console.log('Profile HERE')
         //console.log(this.context.uid)
+        const { username, bio, profile_pic_url, email} = this.state.currentUser
         const displayform = <> 
         <div className="jumbotron">
-            <h1 className="display-4">@heri</h1>
-            <p className="lead">"I sell tech and stuff"</p>
+                <h1 className="display-4">@{username}</h1>
+                <p className="lead">Contact: {email}</p>
+                <p className="lead">'{bio}'</p>
+            
 
             <div className="card mb-3" style={{"width" : "100%"}}>
                     <div className="row no-gutters" style={{ "justifyContent": "center" }}> 
                     <div className="col-md-4">
-                            <img src="https://images.unsplash.com/photo-1469004243181-2a4364487fbf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" className="card-img" alt="..." />
+                            <img src={profile_pic_url} className="card-img" alt="..." />
                     </div>
                         
 
@@ -86,7 +163,7 @@ class Profile extends Component {
                 <form className=''>
 
                     <div className="custom-file">
-                        <input type="file" className="custom-file-input" id="validatedCustomFile" required name='profile_pic_url' onChange={this.handleFile} />
+                        <input type="file" className="custom-file-input" id="validatedCustomFile" required name='profile_pic_url' onChange={this.handleFile} placeholder={this.state.product}/>
                         <label className="custom-file-label" >{this.state.profile_pic_name}</label>
                     </div>
                     <br />
@@ -95,7 +172,7 @@ class Profile extends Component {
                     </div>
                 </form>
                 </div>
-
+            {/* <img src={this.state.product} /> */}
             
                 </>
         return (
@@ -104,6 +181,7 @@ class Profile extends Component {
                 {
                     (user) => {
                         if (user) {
+                            console.log('inside the profile', user)
                             return displayform
                         } else {
                             return <Redirect to='/login' />
