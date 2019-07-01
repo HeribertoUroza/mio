@@ -1,4 +1,4 @@
-<img src='./mio/public/MockMio/Pictures/MainLogo.png' width="250" height="250">
+
 
 ### `Assignment` ###
 Pursuit (https://github.com/mmosayed/PCNW-Portfolio-Projects)
